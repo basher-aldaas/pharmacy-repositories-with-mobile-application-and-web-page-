@@ -14,4 +14,9 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function user_factory_medicine(){
+        return $this->hasMany(userFactoryMedicine::class,'order_id');
+
+    }
 }

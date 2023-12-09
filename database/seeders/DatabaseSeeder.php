@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\FactoryMedicine;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +18,8 @@ class DatabaseSeeder extends Seeder
             CatigorieSeeder::class,
             UserSeeder::class,
             FactorySeeder::class,
-            // MedicineSeeder::class
+            MedicineSeeder::class,
+            FactoryMedicineSeeder::class
 
         ]);
     }

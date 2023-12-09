@@ -11,9 +11,11 @@ class Factory extends Model
 
     protected $fillable=['name'];
 
-    public function medicine(){
-        return $this->hasMany(Medicine::class);
-    }
-
+    // public function factory_medicine_f(){
+    //     return $this->hasMany(FactoryMedicine::class);
+    // }
+public function medicines(){
+    return $this->belongsToMany(Medicine::class);
+}
 
 }

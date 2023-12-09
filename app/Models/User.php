@@ -3,7 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use FactoryMethod;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -68,16 +71,15 @@ class User extends Authenticatable implements JWTSubject
     public function order(){
         return $this->hasMany(Order::class);
 
-    }
-
-    public function medicines(){
-        return $this->belongsToMany(Medicine::class,'user_medicines');
-        // return $this->belongsToMany(Medicine::class,'user_medicines','medicine_id');
 
     }
 
-    // public function medicinesFavorite(){
-    //     return $this->belongsToMany(Medicine::class,'user_medicine_favorites','medicine_id');
+    public function factory_medicines(){
+        return $this->belongsToMany(FactoryMedicine::class);
+    }
+
+    // public function factory_medicines_v(){
+    //     return $this->belongsToMany(FactoryMedicine::class);
 
     // }
 }

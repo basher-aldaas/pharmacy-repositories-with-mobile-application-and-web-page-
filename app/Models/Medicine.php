@@ -11,23 +11,12 @@ class Medicine extends Model
      protected $fillable=['commercial_name'];
     // protected $guarded=[];
 
-    public function catigorie(){
-        return $this->belongsTo(Catigorie::class,'catigorie_id');
-
-    }
-
-    public function factory(){
-        return $this->belongsTo(factory::class,'factory_id');
-
-    }
-
-    public function users(){
-        return $this->belongsToMany(User::class,'user_medicines','user_id');
-
-    }
-
-    // public function usersFavorite(){
-    //     return $this->belongsToMany(User::class,'user_medicine_favorites','user_id');
-
+    //change for model herer combair with model UserFactoryMedicine
+    // public function factory_medicine_m(){
+    //     return $this->hasMany(FactoryMedicine::class);
     // }
+
+    public function factories(){
+        return $this->belongsToMany(Factory::class);
+    }
 }

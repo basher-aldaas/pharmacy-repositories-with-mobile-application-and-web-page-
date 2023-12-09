@@ -12,8 +12,10 @@ class Catigorie extends Model
 
     //how has my primare Key
 
-    public function medicine(){
-        return $this->hasMany(Medicine::class);
+    public function factory_medicine(){
+        return $this->hasMany(FactoryMedicine::class);
     }
+
+
 
 }

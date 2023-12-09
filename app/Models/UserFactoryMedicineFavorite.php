@@ -11,12 +11,12 @@ class UserFactoryMedicineFavorite extends Model
     protected $fillable=['user_id','factoryMedicine_id'];
 
     // public function user(){
-    //     return $this->belongsTo(User::class,'user_medicine_favorites','user_id');
+    //     return $this->belongsTo(User::class);
 
     // }
 
-    // public function medicine(){
-    //     return $this->belongsTo(Medicine::class,'user_medicine_favorites','medicine_id');
+    // public function factory_medicine_v(){
+    //     return $this->belongsTo(FactoryMedicine::class);
 
     // }
 }

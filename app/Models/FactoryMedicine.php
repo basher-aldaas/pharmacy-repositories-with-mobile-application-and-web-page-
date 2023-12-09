@@ -20,4 +20,24 @@ class FactoryMedicine extends Model
     'price',
     'amount'
 ];
+
+
+public function medicine(){
+    return $this->belongsTo(Medicine::class);
+}
+
+public function factorie(){
+    return $this->belongsTo(Factory::class);
+}
+
+public function catigorie(){
+    return $this->belongsTo(Catigorie::class);
+}
+public function users(){
+    return $this->belongsToMany(User::class);
+}
+
+// public function users_v(){
+//     return $this->belongsToMany(User::class);
+// }
 }

@@ -13,152 +13,152 @@ class MedicineSeeder extends Seeder
      */
     public function run(): void
     {
-    //    Medicine::query()->insert([
-    //     [
-    //         'catigorie_id'=>1,
-    //         'factory_id'=>1,
-    //         'scientific_name'=>"Aspirin",
-    //         'commercial_name'=>"Aspirin",
-    //         'catigorie'=>"Analgesics",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+       Medicine::query()->insert([
+        [
+            'commercial_name'=>"Acetaminophen",
+        ],
+        [
+            'commercial_name'=>"Ibuprofen",
+        ],
+        [
+            'commercial_name'=>"Aspirin",
+        ],
+        [
+            'commercial_name'=>"Naproxen",
+        ],
+        [
+            'commercial_name'=>"Ketorolac",
+        ],
+        [
+            'commercial_name'=>"Morphine",
+        ],
+      ///
+        [
+            'commercial_name'=>"Amoxicillin",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>1,
-    //         'factory_id'=>1,
-    //         'scientific_name'=>"Morphine",
-    //         'commercial_name'=>"Morphine",
-    //         'catigorie'=>"Analgesics",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Ciprofloxacin",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>2,
-    //         'factory_id'=>2,
-    //         'scientific_name'=>"Amoxicillin",
-    //         'commercial_name'=>"Amoxicillin",
-    //         'catigorie'=>"Antibiotics",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Azithromycin",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>2,
-    //         'factory_id'=>2,
-    //         'scientific_name'=>"Penicillin",
-    //         'commercial_name'=>"Penicillin",
-    //         'catigorie'=>"Antibiotics",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Penicillin",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>3,
-    //         'factory_id'=>3,
-    //         'scientific_name'=>"Sertraline",
-    //         'commercial_name'=>"Sertraline",
-    //         'catigorie'=>"Antidepressants",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Doxycycline",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>3,
-    //         'factory_id'=>3,
-    //         'scientific_name'=>"Bupropion",
-    //         'commercial_name'=>"Bupropion",
-    //         'catigorie'=>"Antidepressants",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Erythromycin",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>4,
-    //         'factory_id'=>4,
-    //         'scientific_name'=>"Lisinopril",
-    //         'commercial_name'=>"Lisinopril",
-    //         'catigorie'=>"Antihypertensives",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        ////
+        [
+            'commercial_name'=>"Sertraline",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>4,
-    //         'factory_id'=>4,
-    //         'scientific_name'=>"Losartan",
-    //         'commercial_name'=>"Losartan",
-    //         'catigorie'=>"Antihypertensives",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Bupropion",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>5,
-    //         'factory_id'=>5,
-    //         'scientific_name'=>"Rolaids",
-    //         'commercial_name'=>"Rolaids",
-    //         'catigorie'=>"Antacids",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Fluoxetine",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>5,
-    //         'factory_id'=>5,
-    //         'scientific_name'=>"Maalox",
-    //         'commercial_name'=>"Maalox",
-    //         'catigorie'=>"Antacids",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Escitalopram",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>6,
-    //         'factory_id'=>2,
-    //         'scientific_name'=>"Cetirizine",
-    //         'commercial_name'=>"Cetirizine",
-    //         'catigorie'=>"Antihistamines",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Venlafaxine",
 
-    //     ],
-    //     [
-    //         'catigorie_id'=>6,
-    //         'factory_id'=>2,
-    //         'scientific_name'=>"Levocetirizine",
-    //         'commercial_name'=>"Levocetirizine",
-    //         'catigorie'=>"Antihistamines",
-    //         'man_company'=>"Tameco",
-    //         'exp_day'=>"2023/12/10",
-    //         'price'=>2350,
-    //         'amount'=>5
+        ],
+        [
+            'commercial_name'=>"Amitriptyline",
 
-    //     ]
+        ],
+        ///
+        [
+            'commercial_name'=>"Lisinopril",
 
-    //    ]);
+        ],
+        [
+            'commercial_name'=>"Losartan",
+
+        ],
+        [
+            'commercial_name'=>"Amlodipine",
+
+        ],
+        [
+            'commercial_name'=>"Metoprolol",
+
+        ],
+        [
+            'commercial_name'=>"Valsartan",
+
+        ],
+        [
+            'commercial_name'=>"Hydrochlorothiazide",
+
+        ],
+        ////
+        [
+            'commercial_name'=>"Rolaids",
+
+        ],
+        [
+            'commercial_name'=>"Maalox",
+
+        ],
+        [
+            'commercial_name'=>"Tums",
+
+        ],
+        [
+            'commercial_name'=>"Mylanta",
+
+        ],
+        [
+            'commercial_name'=>"Gaviscon",
+
+        ],
+        [
+            'commercial_name'=>"Pepto-Bismol",
+
+        ],
+        ///
+        [
+            'commercial_name'=>"Cetirizine",
+
+        ],
+        [
+            'commercial_name'=>"Levocetirizine",
+
+        ],
+        [
+            'commercial_name'=>"Fexofenadine",
+
+        ],
+        [
+            'commercial_name'=>"Diphenhydramine",
+
+        ],
+        [
+            'commercial_name'=>"Desloratadine",
+
+        ],
+        [
+            'commercial_name'=>"Loratadine",
+
+        ]
+        ///
+
+       ]);
     }
 }
