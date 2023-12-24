@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\api\CatigorieApiController;
 use App\Http\Controllers\api\MedicineApiController;
+use App\Http\Controllers\FactoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserFactoryMedicineController;
 use App\Http\Controllers\web\CatigoriesController;
 use App\Http\Controllers\web\MedicineController;
+use App\Models\Factory;
+use App\Models\UserFactoryMedicine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +47,11 @@ Route::prefix('admin')->middleware(['auth:api','isAdmin'])->group(function(){
     Route::get('/searchCat',[CatigoriesController::class,'searchCat']);
 
 
+});
 
+Route::middleware(['auth:api','isAdmin'])->group(function () {
+    Route::get('getAllOrders',[OrderController::class,'getAllOrders']);
+    Route::post('PaymentStatus',[OrderController::class,'PaymentStatus']);
 });
 
 Route::prefix('auth')->middleware(['api'])->group(function(){
@@ -56,8 +65,15 @@ Route::middleware(['auth:api',])->group(function () {
     Route::get('index/catigories',[CatigorieApiController::class,'indexCat']);
     Route::get('searchC',[CatigorieApiController::class,'searchC']);
     Route::get('index/medicines',[MedicineApiController::class,'indexMed']);
+    Route::get('indexMedicines',[MedicineApiController::class,'indexMedicines']);
     Route::get('searchM',[MedicineApiController::class,'searchM']);
-    Route::get('index',[MedicineApiController::class,'index']);
+    Route::get('getFactory',[FactoryController::class,'getFactory']);
+    Route::post('newCart',[OrderController::class,'newCart']);
+    Route::post('addToCart',[UserFactoryMedicineController::class,'addCart']);
+    Route::get('delete_from_cart',[UserFactoryMedicineController::class,'delete']);
+    Route::post('sendOrder',[OrderController::class,'sendOrder']);
+    Route::get('getOrders',[OrderController::class,'getOrder']);
+
 });
 
 

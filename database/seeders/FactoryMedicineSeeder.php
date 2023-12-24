@@ -34,7 +34,7 @@ class FactoryMedicineSeeder extends Seeder
                 'commercial_name'=>'Morphine',
                 'catigorie'=>'Analgesics',
                 'man_company'=>'tameco',
-                'exp_day'=>'2024-9-15',
+                'exp_day'=>'2020-9-15',
                 'price'=>2500,
                 'amount'=>90
             ],
@@ -46,7 +46,7 @@ class FactoryMedicineSeeder extends Seeder
                 'commercial_name'=>'Lisinopril',
                 'catigorie'=>'Antibiotics',
                 'man_company'=>'tameco',
-                'exp_day'=>'2024-9-15',
+                'exp_day'=>'2019-3-2',
                 'price'=>2500,
                 'amount'=>90
             ],

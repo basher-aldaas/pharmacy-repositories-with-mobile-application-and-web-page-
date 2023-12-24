@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('order_status')->default('in preparation');
-            $table->string('payment_status')->default('unpaid');
-            $table->integer('total_price');
+            $table->string('order_status')->nullable();
+            $table->string('payment_status')->nullable();
+            $table->integer('total_price')->nullable();
             $table->timestamps();
         });
     }

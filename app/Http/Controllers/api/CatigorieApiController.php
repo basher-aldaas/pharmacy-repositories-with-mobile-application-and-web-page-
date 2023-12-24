@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Catigorie;
 use App\Models\Factory;
+use App\Models\FactoryMedicine;
+use FactoryMethod;
 use Illuminate\Http\Request;
 
 class CatigorieApiController extends Controller
@@ -17,6 +19,7 @@ class CatigorieApiController extends Controller
             'message'=>"This is all catigories"
         ],200);
     }
+
 
     //function to search for catigorie
     public function searchC(Request $request){

@@ -29,7 +29,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(Request $request) {
+
+
+     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'userName' => ['required'],
             'email'=>['required','unique:users,email','email'],
