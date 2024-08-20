@@ -72,14 +72,16 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Order::class);
 
 
-    }
+    } 
 
     public function factory_medicines(){
         return $this->belongsToMany(FactoryMedicine::class);
     }
 
-    // public function factory_medicines_v(){
-    //     return $this->belongsToMany(FactoryMedicine::class);
+     public function factory_medicines_v(){
+         return $this->belongsToMany(FactoryMedicine::class);
 
-    // }
+     }
 }
+
+

@@ -6,6 +6,12 @@ use App\Models\Order;
 use App\Models\UserFactoryMedicine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use App\Notifications\CreateNewOrder;
+
+
+use Carbon\Carbon;
+
 
 class OrderController extends Controller
 {
@@ -41,6 +47,36 @@ class OrderController extends Controller
             ]);
         }
 
+
+
+        public function get_report(Request $request)
+        {
+            $id = auth()->user()->id;
+
+            $request->validate([
+                'endDate' => 'required|date_format:d/m/Y|after:startDate|before_or_equal:today',
+                'startDate' => 'required|date_format:d/m/Y|before:endDate'
+            ], [
+                'endDate.after' => 'The end date must be a date after the start date.',
+                'startDate.before' => 'The start date must be a date before the end date.'
+            ]);
+
+            $startDate = Carbon::createFromFormat('d/m/Y', $request->startDate);
+            $endDate = Carbon::createFromFormat('d/m/Y', $request->endDate);
+
+            $orders = Order::query()
+                ->where('user_id', $id)
+                ->whereBetween('created_at', [$startDate->startOfDay(), $endDate->endOfDay()])
+                ->get();
+
+            return response()->json([
+                'data' => $orders,
+                'message' => 'Report'
+            ]);
+        }
+
+
+
         //function to get all user orders
         public function getOrder(){
             $id=auth()->user()->id;
@@ -50,6 +86,7 @@ class OrderController extends Controller
                 'data'=>$orders,
                 'message'=>'all orders'
             ]);
+            
 
         }
 
@@ -62,7 +99,7 @@ class OrderController extends Controller
                   'data'=>$orders,
                   'message'=>'all orders'
               ]);
-     }
+    }
           //function to change Payment status
           public function PaymentStatus(Request $request){
             $id=$request->input('order_id');
@@ -73,11 +110,57 @@ class OrderController extends Controller
                 'status'=>1,
                 'message'=>'updated successfully'
             ]);
-   }
+}
+
+
+
+
+    //Enum بياخد ثلث قيم بس
     //function to change Payment status
     public function OrderStatus(Request $request){
 
+        $request->validate([
+            'order_id'=>'required',
+            'order_status'=>'required',
+
+        ]);
+
+        $order= Order::FindOrFail($request->order_id);
+        $order ->update([
+            'order_status'=> $request-> order_status
+        ]);
+
+
+        $message = "you Order Status has been updated to " .$order -> order_status    ;
+
+        $receiver = User::FindOrFail($order -> user_id);
+        $receiver -> notify(new CreateNewOrder($message));
+
+
+
+
+
+
+        return response()->json([
+            'status'=>1,
+            'message'=>'updated successfully'
+        ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

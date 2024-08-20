@@ -3,11 +3,16 @@
 use App\Http\Controllers\api\CatigorieApiController;
 use App\Http\Controllers\api\MedicineApiController;
 use App\Http\Controllers\FactoryController;
+use App\Http\Controllers\FactoryMedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFactoryMedicineController;
+use App\Http\Controllers\UserFactoryMedicineFavoriteController;
 use App\Http\Controllers\web\CatigoriesController;
 use App\Http\Controllers\web\MedicineController;
+use App\Http\Controllers\web\TranslateController;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+
 use App\Models\Factory;
 use App\Models\UserFactoryMedicine;
 use Illuminate\Http\Request;
@@ -52,13 +57,17 @@ Route::prefix('admin')->middleware(['auth:api','isAdmin'])->group(function(){
 Route::middleware(['auth:api','isAdmin'])->group(function () {
     Route::get('getAllOrders',[OrderController::class,'getAllOrders']);
     Route::post('PaymentStatus',[OrderController::class,'PaymentStatus']);
+    Route::post('factory-medicines', [FactoryMedicineController::class, 'store']);
+
 });
 
 Route::prefix('auth')->middleware(['api'])->group(function(){
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'register']);
     Route::post('/logout', [UserController::class, 'logout']);
-
+    Route::post('user/password/email', [UserController::class,'userForgotPassword']);
+    Route::post('user/password/code/check', [UserController::class,'userCheckCode']);
+    Route::post('user/password/reset', [UserController::class,'userResetPassword']);
 });
 
 Route::middleware(['auth:api',])->group(function () {
@@ -73,7 +82,16 @@ Route::middleware(['auth:api',])->group(function () {
     Route::get('delete_from_cart',[UserFactoryMedicineController::class,'delete']);
     Route::post('sendOrder',[OrderController::class,'sendOrder']);
     Route::get('getOrders',[OrderController::class,'getOrder']);
+    Route::get('favorites', [UserFactoryMedicineFavoriteController::class, 'index']);
+    Route::post('favorites/store', [UserFactoryMedicineFavoriteController::class, 'store']);
+    Route::post('favorites/delete', [UserFactoryMedicineFavoriteController::class, 'destroy']);
 
+    Route::get('/all_notifications',[UserController::class,'listAllNotification']);
+    Route::post('/order_status',[OrderController::class,'OrderStatus']);
+    Route::post('report',[OrderController::class,'get_report']);
 });
 
 
+
+
+//Route::get('/translate',[TranslateController::class,'translate']);

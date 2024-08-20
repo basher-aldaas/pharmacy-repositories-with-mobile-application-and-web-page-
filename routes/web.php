@@ -3,7 +3,7 @@
 use App\Http\Controllers\web\CatigoriesController;
 use App\Http\Controllers\web\MedicineController;
 use Illuminate\Support\Facades\Route;
-
+use Stichoza\GoogleTranslate\GoogleTranslate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +40,8 @@ Route::get('/', function () {
 //     Route::get('/Home/searchCat','searchCat')->name('catigorie.search');
 
 // });
+
+Route::get('/translate', function () {
+    $tr = new GoogleTranslate('en');
+    return $tr->setSource("en")->setTarget("ar")->translate("hello world");
+});

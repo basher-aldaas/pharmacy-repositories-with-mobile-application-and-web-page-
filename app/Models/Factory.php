@@ -17,5 +17,5 @@ class Factory extends Model
 public function medicines(){
     return $this->belongsToMany(Medicine::class);
 }
-
+ 
 }

@@ -1,17 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\FactoryMedicine;
 use App\Models\UserFactoryMedicine;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use App\Notifications\CreateNewOrder;
+
 
 class UserFactoryMedicineController extends Controller
 {
     //function to add medicine to cart
     public function addCart(Request $request){
+        
+       
+        
         $id=auth()->user()->id;
         $medicineName=FactoryMedicine::query()->where('id',$request->input('fMedicine_id'))->value('commercial_name');
         $amount=FactoryMedicine::query()->where('id',$request->input('fMedicine_id'))->value('amount');
@@ -47,6 +52,14 @@ class UserFactoryMedicineController extends Controller
                 'medicineName'=>$medicineName,
                 'quantity'=>$request->input('quantity')
             ]);
+
+            $message = "you have a New Order has added";
+            
+            $Admin = User::find(1);
+            $Admin -> notify(new CreateNewOrder($message));
+            
+            
+
         return response()->json([
             'status'=>1,
             'data'=>$data,
@@ -57,13 +70,21 @@ class UserFactoryMedicineController extends Controller
 
     }
 
-    //function to delete medicine from cart
-    public function delete(Request $request){
-        UserFactoryMedicine::query()->where('id',$request->input('fMedicine_id'))->delete();
-        return response()->json([
-            'status'=>1,
-            'message'=>'deleted successfully'
-        ],201);
-    }
+
+
+
+
+
+
+
+
+    // //function to delete medicine from cart
+    // public function delete(Request $request){
+    //     UserFactoryMedicine::query()->where('id',$request->input('fMedicine_id'))->delete();
+    //     return response()->json([
+    //         'status'=>1,
+    //         'message'=>'deleted successfully'
+    //     ],201);
+    
 
 }
